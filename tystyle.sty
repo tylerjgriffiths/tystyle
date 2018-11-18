@@ -41,6 +41,12 @@
 
 %% Typeset units well.
 \RequirePackage{siunitx}
+%% Declare some convenient unit shortcuts.
+%% The kilojoule per mole
+\DeclareSIUnit{\kjpm}{\kilo\joule\per\mole}
+%% The Hartree
+\DeclareSIUnit{\hartree}{Ha}
+\DeclareSIUnit{\Ha}{\hartree}
 
 %% Chemical typesetting
 \RequirePackage{mhchem}
@@ -60,4 +66,5 @@
 \else
 \RequirePackage{garamondx}
 \RequirePackage[garamondx]{newtxmath}
+\RequirePackage{microtype}
 \fi
