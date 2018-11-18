@@ -1,0 +1,63 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Define information about the package. %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\providecommand{\@PackageName}{tystyle}
+\providecommand{\@PackageDesc}{Personal stylings and standard packages}
+\providecommand{\@PackageVer}{0.1}
+\providecommand{\@PackageDate}{2018-11-18}
+
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{\@PackageName}[\@PackageDate{} \@PackageVer{} \@PackageDesc{}]
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% Internal functions %%
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Write a package info message to the compile log.
+\providecommand{\@say}[1]{\PackageInfo{\PackageName \PackageVersion}{{#1}}}
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Declare conditionals %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\ifpackageonly\packageonlyfalse
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Declare and process options %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareOption{packageonly}{
+  %% Only include packages, without modifying style.
+  \packageonlytrue
+}
+
+\ProcessOptions\relax
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Include packages. %%
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Typeset units well.
+\RequirePackage{siunitx}
+
+%% Chemical typesetting
+\RequirePackage{mhchem}
+
+%% Chemical macros
+\RequirePackage{chemmacros}
+
+%% A personal package to speed up mathsetting.
+\RequirePackage{easymath} 
+
+%%%%%%%%%%%%%%%%%%%
+%% Set stylings. %%
+%%%%%%%%%%%%%%%%%%%
+
+\ifpackageonly
+\@say{Only including packages, no style changes.}
+\else
+\RequirePackage{garamondx}
+\RequirePackage[garamondx]{newtxmath}
+\fi
