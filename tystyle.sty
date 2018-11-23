@@ -78,4 +78,11 @@
 \RequirePackage{garamondx}
 \RequirePackage[garamondx]{newtxmath}
 \RequirePackage{microtype}
+
+%% Swap \epsilon and \varepsilon
+\let\epstmp\epsilon
+\let\epsilon\varepsilon
+\let\varepsilon\epstmp
+\let\epstmp\undefined
+
 \fi
