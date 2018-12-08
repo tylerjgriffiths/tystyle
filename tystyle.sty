@@ -39,6 +39,10 @@
 %% Include packages. %%
 %%%%%%%%%%%%%%%%%%%%%%%
 
+%% Well-set tables
+\RequirePackage{tabularx}
+\RequirePackage{booktabs}
+
 %% Typeset units well.
 \RequirePackage{siunitx}
 %% Declare some convenient unit shortcuts.
@@ -49,6 +53,9 @@
 \DeclareSIUnit{\Ha}{\hartree}
 %% Shortcut for degrees C.
 \DeclareSIUnit{\dC}{\celsius}
+%% The tesla
+\DeclareSIUnit{\T}{\tesla}
+\DeclareSIUnit{\rad}{\radian}
 
 %% Chemical typesetting
 \RequirePackage[version=4]{mhchem}
@@ -64,6 +71,9 @@
 %% TikZ-based circuit diagrams
 \RequirePackage{circuitikz}
 
+%% Simplify defining word-replacement macros.
+\RequirePackage{xspace}
+
 %%%%%%%%%%%%%%%
 %% Shortcuts %%
 %%%%%%%%%%%%%%%
@@ -71,16 +81,32 @@
 %% \os as a shortcut to \oldstylenums
 \let\os\oldstylenums
 
-%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%
+%% Definitions %%
+%%%%%%%%%%%%%%%%%
+
+%% Standard conditions with aliases.
+\providecommand{\standard}{{\ensuremath{-\kern-4pt{\ominus}\kern-4pt-}}}
+\let\plimsoll\standard %% The proper name for the symbol
+\let\stdc\standard %% Standard conditions.
+
+%%%%%%%%%%%%%%%%%%% 
 %% Set stylings. %%
 %%%%%%%%%%%%%%%%%%%
 
 \ifpackageonly
 \@say{Only including packages, no style changes.}
 \else
+
+%% Garamond as main and math font.
 \RequirePackage{garamondx}
 \RequirePackage[garamondx]{newtxmath}
+
+%% Make small microtypographical improvements
 \RequirePackage{microtype}
+
+%% Modify the appearance of captions.
+\RequirePackage[labelfont=bf, margin=2em]{caption}
 
 %% Swap \epsilon and \varepsilon
 \let\epstmp\epsilon
